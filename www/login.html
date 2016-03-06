@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Chat Away - Login</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <script type="text/javascript" src="placeholder.js"></script>
+    <script src="http://code.jquery.com/jquery-2.2.1.min.js"></script>
+    <script src="http://code.jquery.com/jquery-migrate-1.4.0.min.js"></script>
+
+
+    <script>
+      //var username = document.getElementById('username').value;
+      // var password = document.getElementById('password').value;
+      var serverResponse = "";
+      $(function(){
+        $('form[id = slick-login]').submit(function(){
+          $.post($(this).attr('action'), $(this).serialize(), function(json) {
+            serverResponse = JSON.stringify(json);
+            console.log(serverResponse);
+            //console.log(username: username);
+            //alert(json.username);
+            if (serverResponse.length > 0) {
+              // $.post("profile",
+              // {
+              //   username: serverResponse.username
+              // }, "");
+              window.location.replace('profile.html?username=' + json.username + '&email=' + json.email + '&accountLevel=' + json.accountLevel);
+            }
+            else {
+              alert("Login incorrect!");
+            }
+          }, 'json');
+          return false;
+        });
+      });
+    </script>
+    <!--
+    <script>
+    	var username;
+    	var email;
+    	var accountLevel;
+    	var url;
+    	var userJSON;
+
+    	function getUserInformation() {
+    		url = window.location.href;
+    		userJSON = url.getText();
+    		alert(userJSON);
+    		//window.location.replace("http://hollandcollege.com");
+        return false;
+    	}
+    </script>
+    -->
+
+</head>
+<body>
+	<form action="http://nekanaya.hccis.info/webservices/chataway_login.php" id="slick-login" method="post">
+	    <label for="username">username</label><input type="text" name="username" id="username" class="placeholder" placeholder="username">
+	    <label for="password">password</label><input type="password" name="password" id="password" class="placeholder" placeholder="password">
+	    <input type="submit" value="Log In">
+	</form>
+  <script>
+
+  </script>
+  <!--
+	<script>
+		document.getElementById("slick-login").onsubmit = function() {getUserInformation()};
+	</script>
+   -->
+</body>
+</html>
