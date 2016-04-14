@@ -1,24 +1,29 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <title></title>
+	<title>Profile</title>
+	<link href="css/theme.min.css" rel="stylesheet">
 </head>
-  <script>
-    var $_GET = {};
 
-    document.location.search.replace(/\??(?:([^=]+)=([^&]*)&?)/g, function () {
-        function decode(s) {
-            return decodeURIComponent(s.split("+").join(" "));
-        }
-
-        $_GET[decode(arguments[1])] = decode(arguments[2]);
-    });
-    console.log($_GET['username']);
-    //var username = document.getElementById('username').value;
-    //console.log(username);
-
-  </script>
 <body>
+	<script>
+		var $_GET = {};
 
+		document.location.search.replace(/\??(?:([^=]+)=([^&]*)&?)/g, function() {
+			function decode(s) {
+				return decodeURIComponent(s.split("+").join(" "));
+			}
+
+			$_GET[decode(arguments[1])] = decode(arguments[2]);
+		});
+		var username = "";
+		username = $_GET['username'];
+		console.log(username);
+		 //var username = document.getElementById('username').value;
+		 //console.log(username);
+	</script>
+	<h2 class="font-semibold mgbt-xs-5">Hello <script>document.write(username)</script></h2>
 </body>
+
 </html>
