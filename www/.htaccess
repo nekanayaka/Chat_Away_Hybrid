@@ -1,5 +1,0 @@
-Header add Access-Control-Allow-Origin *
-
-Header add Access-Control-Allow-Origin http://nekanaya.hccis.info/webservices/chataway_login.php
-
-Header add Access-Control-Allow-Origin http://www.nekanaya.hccis.info/webservices/chataway_login.php
